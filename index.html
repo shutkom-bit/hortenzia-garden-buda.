@@ -29,14 +29,30 @@ img{max-width:100%; display:block}
 .wrap{max-width:1180px; margin:0 auto; padding:0 24px}
 
 body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--bg)}
-header.top{position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:var(--bg); border-bottom:1px solid var(--line)}
-.top .wrap{display:flex; align-items:center; gap:20px; min-height:64px}
-.mark{font-family:"Cormorant Garamond",Georgia,serif; font-size:24px; font-weight:600; text-decoration:none; margin-right:auto; letter-spacing:.01em}
-.nav{display:flex; gap:22px; font-size:15px}
-.nav a{text-decoration:none; color:var(--muted)} .nav a:hover{color:var(--ink)}
+header.top{position:fixed; top:0; left:0; right:0; z-index:9; padding-top:env(safe-area-inset-top,0px); color:#F4F3EE; background:transparent; transition:background .35s ease, color .35s ease, box-shadow .35s ease}
+header.top.solid{background:var(--bg); color:var(--ink); box-shadow:0 1px 0 var(--line)}
+.top .wrap{display:flex; align-items:center; gap:28px; min-height:84px; transition:min-height .35s ease}
+.top.solid .wrap{min-height:68px}
+.mark{display:flex; align-items:center; gap:12px; text-decoration:none; margin-right:auto}
+.mark svg{width:38px; height:38px; flex:none; color:#E3C47F; transition:color .35s}
+.top.solid .mark svg{color:var(--gold)}
+.mark .nm{display:flex; flex-direction:column; line-height:1}
+.mark .nm b{white-space:nowrap; font-family:"Cormorant Garamond",Georgia,serif; font-weight:600; font-size:28px; letter-spacing:.01em}
+.mark .nm i{font-style:normal; font-size:12px; letter-spacing:.34em; margin-top:5px; color:#E3C47F; transition:color .35s}
+.top.solid .mark .nm i{color:var(--gold)}
+.nav{display:flex; gap:26px; font-size:15px}
+.nav a{text-decoration:none; color:inherit; opacity:.82; padding:6px 0; border-bottom:1px solid transparent; transition:opacity .2s, border-color .2s}
+.nav a:hover{opacity:1; border-bottom-color:currentColor}
 .langs{display:flex; gap:2px}
-.langs button{font:500 14px "Jost",sans-serif; background:none; border:0; color:var(--muted); min-width:40px; min-height:40px; cursor:pointer; border-bottom:1.5px solid transparent}
-.langs button[aria-pressed="true"]{color:var(--ink); border-bottom-color:var(--gold)}
+.langs button{font:500 14px "Jost",sans-serif; background:none; border:0; color:inherit; opacity:.7; min-width:40px; min-height:40px; cursor:pointer; border-bottom:1.5px solid transparent}
+.langs button[aria-pressed="true"]{opacity:1; border-bottom-color:#E3C47F}
+.top.solid .langs button[aria-pressed="true"]{border-bottom-color:var(--gold)}
+.hcta{display:inline-flex; align-items:center; min-height:42px; padding:0 20px; border:1px solid currentColor; border-radius:2px; color:inherit; text-decoration:none; font:500 15px "Jost",sans-serif; transition:background .25s, color .25s, border-color .25s}
+.hcta:hover{background:#F4F3EE; color:#1E2621; border-color:#F4F3EE}
+.top.solid .hcta{background:var(--green); color:var(--on-green); border-color:var(--green)}
+.top.solid .hcta:hover{opacity:.9}
+.hero::before{content:""; position:absolute; z-index:1; inset:0 0 auto; height:230px; background:linear-gradient(to bottom, rgba(10,16,12,.68), rgba(10,16,12,0)); pointer-events:none}
+@media (max-width:560px){.hcta{display:none} .mark .nm b{font-size:22px} .mark svg{width:32px; height:32px}}
 
 .hero{position:relative; height:min(88svh,880px); min-height:520px; overflow:hidden; background:var(--soft)}
 .hero img{width:100%; height:100%; object-fit:cover}
@@ -158,7 +174,10 @@ dialog.lb::backdrop{background:rgba(10,14,11,.94)}
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="mark" href="#top">Hortenzia Garden Buda</a>
+    <a class="mark" href="#top" aria-label="Hortenzia Garden Buda">
+      <svg viewBox="0 0 40 40" fill="currentColor" aria-hidden="true"><circle cx="20" cy="9" r="4.3"/><circle cx="12" cy="13.5" r="4.3" opacity=".85"/><circle cx="28" cy="13.5" r="4.3" opacity=".85"/><circle cx="20" cy="18" r="4.3"/><circle cx="9.5" cy="21.5" r="4" opacity=".7"/><circle cx="30.5" cy="21.5" r="4" opacity=".7"/><circle cx="15" cy="25" r="4.2" opacity=".9"/><circle cx="25" cy="25" r="4.2" opacity=".9"/><path d="M20 29.5v8M20 34c-3-0.5-5.5-2.2-6.5-4.5M20 33c2.8-0.3 5-1.8 6-3.8" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".8"/></svg>
+      <span class="nm"><b>Hortenzia Garden</b><i>BUDA</i></span>
+    </a>
     <nav class="nav" aria-label="Menu">
       <a href="#photos" data-t="n_photos"></a>
       <a href="#details" data-t="n_details"></a>
@@ -169,6 +188,7 @@ dialog.lb::backdrop{background:rgba(10,14,11,.94)}
       <button type="button" data-lang="hu">HU</button>
       <button type="button" data-lang="en">EN</button>
     </div>
+    <a class="hcta" href="#contact" data-t="h_cta"></a>
   </div>
 </header>
 
@@ -294,7 +314,7 @@ const CHAPTERS = {
 
 const T = {
 hu:{
- n_photos:"Fotók", n_details:"A lakás", n_area:"Környék", n_terms:"Feltételek",
+ n_photos:"Fotók", n_details:"A lakás", n_area:"Környék", n_terms:"Feltételek", h_cta:"Megtekintés",
  where:"Újbuda, Budapest XI. kerület, Bedő utca", hero_title:"Kertes otthon Buda csendes zöldövezetében", per_month:"havonta", per_month_long:"havi bérleti díj, hosszú távra",
  lede:"Hosszú távra kiadó egy 77 m²-es, igényesen berendezett, teljesen bútorozott és gépesített lakás egy 2006-ban épült, mindössze négylakásos társasház földszintjén. Nappali amerikai konyhával, két hálószoba, terasz és közel 500 m²-es saját kert.",
  facts:[["Bérleti díj","540 000 Ft / hó"],["Alapterület","77 m²"],["Szobák","nappali + 2 hálószoba"],["Terasz","11 m²"],["Kert","közel 500 m², saját használatú"],["Emelet","földszint"],["Költözhető","azonnal"],["Energiaosztály","A+++"]],
@@ -327,7 +347,7 @@ hu:{
  subj:"Érdeklődés: Hortenzia Garden Buda", foot:"Hortenzia Garden Buda, kiadó kertes lakás Újbudán (Budapest XI.)"
 },
 en:{
- n_photos:"Photos", n_details:"The flat", n_area:"Neighbourhood", n_terms:"Terms",
+ n_photos:"Photos", n_details:"The flat", n_area:"Neighbourhood", n_terms:"Terms", h_cta:"Book a viewing",
  where:"Újbuda, on the Buda side of Budapest (District XI)", hero_title:"A garden home in a quiet, green corner of Buda", per_month:"per month", per_month_long:"monthly rent, long-term let",
  lede:"A 77 m² flat, tastefully furnished and fully equipped, on the ground floor of a building of just four flats, built in 2006. A living room with an open-plan kitchen, two bedrooms, a terrace and a private garden of nearly 500 m².",
  facts:[["Rent","540,000 Ft / month"],["Size","77 m²"],["Rooms","living room + 2 bedrooms"],["Terrace","11 m²"],["Garden","nearly 500 m², private"],["Floor","ground floor"],["Available","now"],["Energy rating","A+++"]],
@@ -430,6 +450,9 @@ $("#sendMail").onclick=()=>{const d=data(); if(!d)return; const t=T[lang]; if(!E
 $("#sendWa").onclick=()=>{const d=data(); if(!d)return; const t=T[lang]; if(!PHONE){$("#formNote").textContent=t.no_contact; return;}
   window.open("https://wa.me/"+PHONE.replace(/\D/g,"")+"?text="+encodeURIComponent(t.msg(d)),"_blank");};
 document.querySelectorAll("[data-lang]").forEach(b=>b.onclick=()=>{lang=b.dataset.lang; try{localStorage.setItem("lang",lang)}catch(e){} render();});
+const hdr=document.querySelector("header.top"), heroEl=document.querySelector(".hero");
+function hdrState(){hdr.classList.toggle("solid", window.scrollY > heroEl.offsetHeight - 120);}
+window.addEventListener("scroll",hdrState,{passive:true}); window.addEventListener("resize",hdrState); hdrState();
 try{const s=localStorage.getItem("lang"); if(s&&T[s]) lang=s;}catch(e){}
 render();
 </script>
