@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Hortenzia Garden Buda: igényesen berendezett, 77 m²-es, 3 szobás kertes lakás kiadó Újbudán (Budapest XI.), 11 m²-es terasszal és közel 500 m²-es saját kerttel.">
+<title>Hortenzia Garden Buda, kiadó kertes lakás Újbudán (Budapest XI.)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1F1EE; --ink:#1E2621; --muted:#58615B; --green:#2F4A3C; --on-green:#F1F1EE; --gold:#9A7533; --line:#D4D5CE; --soft:#E6E7E1;
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#151916; --ink:#E9E8E2; --muted:#A8AFA9; --green:#9DBFA9; --on-green:#151916; --gold:#CDA65C; --line:#2D332F; --soft:#1E2420; color-scheme:dark;}}
+:root[data-theme="dark"]{--bg:#151916; --ink:#E9E8E2; --muted:#A8AFA9; --green:#9DBFA9; --on-green:#151916; --gold:#CDA65C; --line:#2D332F; --soft:#1E2420; color-scheme:dark;}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px); scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *{transition:none!important}}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0; background:var(--bg); color:var(--ink); font:400 17px/1.65 "Jost",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3,.serif{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif; font-weight:500; line-height:1.05; margin:0}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%; display:block}
+:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+.wrap{max-width:1180px; margin:0 auto; padding:0 24px}
+
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--bg)}
+header.top{position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:var(--bg); border-bottom:1px solid var(--line)}
+.top .wrap{display:flex; align-items:center; gap:20px; min-height:64px}
+.mark{font-family:"Cormorant Garamond",Georgia,serif; font-size:24px; font-weight:600; text-decoration:none; margin-right:auto; letter-spacing:.01em}
+.nav{display:flex; gap:22px; font-size:15px}
+.nav a{text-decoration:none; color:var(--muted)} .nav a:hover{color:var(--ink)}
+.langs{display:flex; gap:2px}
+.langs button{font:500 14px "Jost",sans-serif; background:none; border:0; color:var(--muted); min-width:40px; min-height:40px; cursor:pointer; border-bottom:1.5px solid transparent}
+.langs button[aria-pressed="true"]{color:var(--ink); border-bottom-color:var(--gold)}
+
+.hero{position:relative; height:min(88svh,880px); min-height:520px; overflow:hidden; background:var(--soft)}
+.hero img{width:100%; height:100%; object-fit:cover}
+.hero::after{content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(10,16,12,.82) 0%, rgba(10,16,12,.5) 35%, rgba(10,16,12,0) 62%)}
+.hero .cap{position:absolute; z-index:1; left:0; right:0; bottom:0; color:#F4F3EE; padding-bottom:48px}
+.hero .where{font-size:15px; letter-spacing:.04em; opacity:.9}
+.hero h1{font-size:clamp(40px,6vw,80px); max-width:12em; margin-top:10px}
+.hero .price{margin-top:18px; font-size:19px}
+.hero .price b{font-weight:500}
+
+.lede{padding:96px 0 88px}
+.lede .wrap{display:grid; grid-template-columns:1.35fr 1fr; gap:72px; align-items:start}
+.lede p{font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(26px,2.6vw,34px); line-height:1.3}
+.facts{margin:0; border-top:1px solid var(--ink)}
+.facts div{display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid var(--line)}
+.facts dt{color:var(--muted)} .facts dd{margin:0; text-align:right}
+.btn{display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 28px; border:0; border-radius:2px; background:var(--green); color:var(--on-green); font:500 16px "Jost",sans-serif; text-decoration:none; cursor:pointer}
+.btn.line{background:transparent; color:var(--ink); border:1px solid var(--ink)}
+.facts + .btn{margin-top:28px}
+
+.chapter{padding:56px 0 96px}
+.chapter .wrap{display:grid; grid-template-columns:repeat(12,1fr); gap:24px; align-items:end}
+.chapter .big{grid-column:1 / span 7}
+.chapter .txt{grid-column:9 / span 4; padding-bottom:8px}
+.chapter.flip .big{grid-column:6 / span 7; grid-row:1}
+.chapter.flip .txt{grid-column:1 / span 4; grid-row:1}
+.chapter h2{font-size:clamp(38px,4.6vw,60px); margin-bottom:20px}
+.chapter .txt p{color:var(--muted); max-width:30em}
+.chapter .small{margin-top:28px}
+figure{margin:0}
+.ph{width:100%; object-fit:cover; background:var(--soft); cursor:zoom-in}
+.big .ph{aspect-ratio:4/5}
+.small .ph{aspect-ratio:4/3}
+figcaption{font-size:14px; color:var(--muted); margin-top:10px}
+.figbtn{padding:0; border:0; background:none; width:100%; display:block; cursor:zoom-in}
+
+.garden{padding:0 0 96px}
+.garden .wide .ph{aspect-ratio:21/9; height:auto}
+.garden .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:24px; margin-top:56px; align-items:start}
+.garden .grid .txt{grid-column:1 / span 5}
+.garden .grid .a{grid-column:7 / span 3; margin-top:40px}
+.garden .grid .b{grid-column:10 / span 3}
+.garden h2{font-size:clamp(38px,4.6vw,60px); margin-bottom:20px}
+.garden .txt p{color:var(--muted); max-width:30em}
+.garden .a .ph,.garden .b .ph{aspect-ratio:3/4}
+
+section.block{padding:88px 0; border-top:1px solid var(--line)}
+.sh{font-size:clamp(36px,4vw,52px); margin-bottom:36px}
+.gtabs{display:flex; flex-wrap:wrap; gap:4px 22px; margin-bottom:28px; border-bottom:1px solid var(--line)}
+.gtabs button{background:none; border:0; padding:10px 0; min-height:44px; font:400 16px "Jost",sans-serif; color:var(--muted); cursor:pointer; border-bottom:1.5px solid transparent; margin-bottom:-1px}
+.gtabs button[aria-pressed="true"]{color:var(--ink); border-bottom-color:var(--gold)}
+.gtabs small{margin-left:5px; font-size:13px}
+.gallery{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:12px}
+.gallery button{padding:0; border:0; background:var(--soft); aspect-ratio:4/3; overflow:hidden; cursor:zoom-in}
+.gallery img{width:100%; height:100%; object-fit:cover; transition:opacity .3s}
+.gallery button:hover img{opacity:.85}
+
+.cols{display:grid; grid-template-columns:repeat(3,1fr); gap:56px}
+.cols h3{font-size:28px; margin-bottom:16px}
+.list{list-style:none; margin:0; padding:0; border-top:1px solid var(--line)}
+.list li{padding:11px 0; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:16px}
+.list li span:last-child{color:var(--muted); text-align:right}
+
+.area{display:grid; grid-template-columns:1fr 2fr; gap:56px}
+.area .intro p{color:var(--muted); margin-bottom:24px}
+.groups{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:36px 40px}
+.groups h3{font-size:24px; margin-bottom:10px}
+.groups ul{list-style:none; margin:0; padding:0}
+.groups li{padding:6px 0; color:var(--muted); border-bottom:1px solid var(--line)}
+
+.terms{display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start}
+.terms .bigprice{font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(52px,6vw,76px); line-height:1}
+.terms .per{color:var(--muted); margin-top:8px}
+.terms .note{color:var(--muted); margin-top:24px; max-width:28em}
+
+form{display:grid; grid-template-columns:1fr 1fr; gap:22px 24px; max-width:860px}
+form .full{grid-column:1/-1}
+form label{display:block; font-size:14px; color:var(--muted); margin-bottom:6px}
+form input,form select,form textarea{width:100%; font:400 17px "Jost",sans-serif; color:var(--ink); background:transparent; border:0; border-bottom:1px solid var(--ink); border-radius:0; padding:10px 0; min-height:46px}
+form textarea{min-height:110px; resize:vertical}
+form input:focus,form select:focus,form textarea:focus{outline:none; border-bottom:2px solid var(--gold)}
+form select option{color:#1E2621}
+.err{color:#A3261D; font-size:14px; margin-top:6px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .err{color:#FFB4AB}}
+:root[data-theme="dark"] .err{color:#FFB4AB}
+.actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:8px}
+.fnote{color:var(--muted); font-size:15px}
+
+footer{padding:40px 0 56px; border-top:1px solid var(--line); color:var(--muted); font-size:14px}
+footer .wrap{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
+
+dialog.lb{border:0; padding:0; background:transparent; max-width:100vw; max-height:100vh; width:100%; height:100%}
+dialog.lb::backdrop{background:rgba(10,14,11,.94)}
+.lbin{position:relative; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:calc(env(safe-area-inset-top,0px) + 60px) 12px calc(env(safe-area-inset-bottom,0px) + 20px)}
+.lbin img{max-width:100%; max-height:calc(100% - 60px); object-fit:contain; user-select:none}
+.lbcap{color:#E9E8E2; margin-top:14px; font-size:15px; text-align:center}
+.lbbtn{position:absolute; width:48px; height:48px; border-radius:50%; border:0; background:rgba(255,255,255,.12); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center}
+.lbbtn:hover{background:rgba(255,255,255,.24)}
+.lbclose{top:calc(env(safe-area-inset-top,0px) + 10px); right:12px}
+.lbprev{left:12px; top:50%; transform:translateY(-50%)} .lbnext{right:12px; top:50%; transform:translateY(-50%)}
+
+@media (max-width:900px){
+  .nav{display:none}
+  .lede{padding:64px 0}
+  .lede .wrap,.terms,.area{grid-template-columns:1fr; gap:40px}
+  .cols{grid-template-columns:1fr; gap:40px}
+  .chapter{padding:32px 0 64px}
+  .chapter .wrap,.garden .grid{grid-template-columns:1fr; gap:24px}
+  .chapter .big,.chapter .txt,.chapter.flip .big,.chapter.flip .txt{grid-column:auto; grid-row:auto}
+  .garden .grid .txt,.garden .grid .a,.garden .grid .b{grid-column:auto; margin-top:0}
+  .big .ph{aspect-ratio:4/3}
+  .garden .wide .ph{aspect-ratio:4/3}
+  form{grid-template-columns:1fr}
+  .hero .cap{padding-bottom:32px}
+}
+@media (max-width:600px){.lbprev,.lbnext{top:auto; bottom:calc(env(safe-area-inset-bottom,0px) + 8px); transform:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">Hortenzia Garden Buda</a>
+    <nav class="nav" aria-label="Menu">
+      <a href="#photos" data-t="n_photos"></a>
+      <a href="#details" data-t="n_details"></a>
+      <a href="#area" data-t="n_area"></a>
+      <a href="#terms" data-t="n_terms"></a>
+    </nav>
+    <div class="langs" role="group" aria-label="Language">
+      <button type="button" data-lang="hu">HU</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <img id="heroImg" alt="">
+    <div class="cap"><div class="wrap">
+      <p class="where" data-t="where"></p>
+      <h1 data-t="hero_title"></h1>
+      <p class="price"><b>540 000 Ft</b> <span data-t="per_month"></span></p>
+    </div></div>
+  </div>
+
+  <section class="lede">
+    <div class="wrap">
+      <p data-t="lede"></p>
+      <div>
+        <dl class="facts" id="facts"></dl>
+        <a class="btn" href="#contact" data-t="cta"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" data-ch="living"></section>
+  <section class="chapter flip" data-ch="bedrooms"></section>
+  <section class="chapter" data-ch="bath"></section>
+
+  <section class="garden">
+    <figure class="wide"><button type="button" class="figbtn" data-pic="A kert"><img class="ph" alt=""></button></figure>
+    <div class="wrap grid">
+      <div class="txt"><h2 data-t="g_title"></h2><p data-t="g_text"></p></div>
+      <figure class="a"><button type="button" class="figbtn" data-pic="Terasz kerti bútorral"><img class="ph" alt=""></button><figcaption></figcaption></figure>
+      <figure class="b"><button type="button" class="figbtn" data-pic="Rózsák a ház mentén"><img class="ph" alt=""></button><figcaption></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="block" id="photos">
+    <div class="wrap">
+      <h2 class="sh" data-t="photos_h"></h2>
+      <div class="gtabs" id="gtabs" role="group"></div>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <section class="block" id="details">
+    <div class="wrap">
+      <h2 class="sh" data-t="details_h"></h2>
+      <div class="cols">
+        <div><h3 data-t="rooms_h"></h3><ul class="list" id="rooms"></ul></div>
+        <div><h3 data-t="extras_h"></h3><ul class="list" id="extras"></ul></div>
+        <div><h3 data-t="house_h"></h3><ul class="list" id="house"></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="area">
+    <div class="wrap area">
+      <div class="intro">
+        <h2 class="sh" data-t="area_h"></h2>
+        <p data-t="area_lead"></p>
+        <a class="btn line" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bed%C5%91%20utca%2C%20Budapest%20XI.%20ker%C3%BClet" data-t="map"></a>
+      </div>
+      <div class="groups" id="groups"></div>
+    </div>
+  </section>
+
+  <section class="block" id="terms">
+    <div class="wrap terms">
+      <div>
+        <h2 class="sh" data-t="terms_h"></h2>
+        <p class="bigprice">540 000 Ft</p>
+        <p class="per" data-t="per_month_long"></p>
+        <p class="note" data-t="terms_note"></p>
+      </div>
+      <ul class="list" id="termsList"></ul>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <h2 class="sh" data-t="contact_h"></h2>
+      <form id="form" novalidate>
+        <div><label for="fname" data-t="fl_name"></label><input id="fname" autocomplete="name" required><p class="err" id="nameErr" hidden data-t="err_name"></p></div>
+        <div><label for="fdate" data-t="fl_date"></label><input id="fdate" type="date"></div>
+        <div><label for="fmonths" data-t="fl_months"></label><select id="fmonths"><option>12</option><option>18</option><option>24</option><option>36+</option></select></div>
+        <div><label for="fpeople" data-t="fl_people"></label><select id="fpeople"><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></div>
+        <div class="full"><label for="fmsg" data-t="fl_msg"></label><textarea id="fmsg"></textarea></div>
+        <div class="full actions">
+          <button type="button" class="btn" id="sendMail" data-t="send_mail"></button>
+          <button type="button" class="btn line" id="sendWa" data-t="send_wa"></button>
+          <a class="btn line" id="callBtn" href="#" data-t="call" hidden></a>
+        </div>
+        <p class="fnote full" id="formNote"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span data-t="foot"></span><span>Budapest XI., Bedő utca</span></div></footer>
+
+<dialog class="lb" id="lb">
+  <div class="lbin" id="lbin">
+    <img id="lbimg" alt="">
+    <p class="lbcap" id="lbcap"></p>
+    <button type="button" class="lbbtn lbclose" id="lbclose"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <button type="button" class="lbbtn lbprev" id="lbprev"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button type="button" class="lbbtn lbnext" id="lbnext"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</dialog>
+
+<script>
+/* ===== Settings ===== */
+const EMAIL = "";   // e.g. "name@example.com"
+const PHONE = "";   // e.g. "+36301234567"
+
+const PHOTOS = [{"src": "photos/01-living-room-with-velvet-sofa.jpg", "cat": "living", "w": 1200, "h": 900, "cap": {"hu": "Nappali bársony kanapéval", "en": "Living room with velvet sofa"}}, {"src": "photos/02-kitchen-and-dining-area.jpg", "cat": "living", "w": 900, "h": 1200, "cap": {"hu": "Konyha és étkező", "en": "Kitchen and dining area"}}, {"src": "photos/03-living-room-with-smart-tv-and-a-garden-v.jpg", "cat": "living", "w": 900, "h": 1200, "cap": {"hu": "Nappali Smart TV-vel, kertre néző ablak", "en": "Living room with Smart TV and a garden view"}}, {"src": "photos/04-sideboard-and-door-to-the-terrace.jpg", "cat": "living", "w": 1200, "h": 900, "cap": {"hu": "Komód és kijárat a teraszra", "en": "Sideboard and door to the terrace"}}, {"src": "photos/05-dining-table-for-four.jpg", "cat": "living", "w": 900, "h": 1200, "cap": {"hu": "Étkezőasztal négy székkel", "en": "Dining table for four"}}, {"src": "photos/06-bedroom-with-bedside-tables.jpg", "cat": "bedroom", "w": 1200, "h": 900, "cap": {"hu": "Hálószoba éjjeliszekrényekkel", "en": "Bedroom with bedside tables"}}, {"src": "photos/07-bedroom-with-a-desk.jpg", "cat": "bedroom", "w": 900, "h": 1200, "cap": {"hu": "Hálószoba íróasztallal", "en": "Bedroom with a desk"}}, {"src": "photos/08-bedside-table-and-lamp.jpg", "cat": "bedroom", "w": 1200, "h": 900, "cap": {"hu": "Éjjeliszekrény és lámpa", "en": "Bedside table and lamp"}}, {"src": "photos/09-wardrobe.jpg", "cat": "bedroom", "w": 900, "h": 1200, "cap": {"hu": "Gardróbszekrény", "en": "Wardrobe"}}, {"src": "photos/10-socket-with-usb-charging.jpg", "cat": "bedroom", "w": 900, "h": 1200, "cap": {"hu": "Konnektor USB-töltővel", "en": "Socket with USB charging"}}, {"src": "photos/11-children-s-room-with-bunk-bed.jpg", "cat": "kids", "w": 900, "h": 1200, "cap": {"hu": "Gyerekszoba emeletes ággyal", "en": "Children's room with bunk bed"}}, {"src": "photos/12-children-s-room-with-built-in-shelving.jpg", "cat": "kids", "w": 900, "h": 1200, "cap": {"hu": "Gyerekszoba beépített polccal", "en": "Children's room with built-in shelving"}}, {"src": "photos/13-desk-corner.jpg", "cat": "kids", "w": 900, "h": 1200, "cap": {"hu": "Íróasztal-sarok", "en": "Desk corner"}}, {"src": "photos/14-the-garden.jpg", "cat": "garden", "w": 1200, "h": 900, "cap": {"hu": "A kert", "en": "The garden"}}, {"src": "photos/15-terrace-with-garden-furniture.jpg", "cat": "terrace", "w": 1200, "h": 900, "cap": {"hu": "Terasz kerti bútorral", "en": "Terrace with garden furniture"}}, {"src": "photos/16-lounge-corner-on-the-terrace.jpg", "cat": "terrace", "w": 1200, "h": 900, "cap": {"hu": "Pihenősarok a teraszon", "en": "Lounge corner on the terrace"}}, {"src": "photos/17-terrace-under-the-parasol.jpg", "cat": "terrace", "w": 900, "h": 1200, "cap": {"hu": "Terasz napernyővel", "en": "Terrace under the parasol"}}, {"src": "photos/18-hydrangeas-on-the-terrace.jpg", "cat": "terrace", "w": 900, "h": 1200, "cap": {"hu": "Hortenziák a teraszon", "en": "Hydrangeas on the terrace"}}, {"src": "photos/19-warm-raised-bed-and-grill-by-the-terrace.jpg", "cat": "terrace", "w": 900, "h": 1200, "cap": {"hu": "Melegágyás és grill a terasz mellett", "en": "Warm raised bed and grill by the terrace"}}, {"src": "photos/20-bathroom-with-bathtub.jpg", "cat": "bath", "w": 900, "h": 1200, "cap": {"hu": "Fürdőszoba káddal", "en": "Bathroom with bathtub"}}, {"src": "photos/21-bathroom-with-window.jpg", "cat": "bath", "w": 900, "h": 1200, "cap": {"hu": "Fürdőszoba ablakkal", "en": "Bathroom with window"}}, {"src": "photos/22-washbasin-with-mirror-cabinet.jpg", "cat": "bath", "w": 900, "h": 1200, "cap": {"hu": "Mosdó tükrös szekrénnyel", "en": "Washbasin with mirror cabinet"}}, {"src": "photos/23-toilet-and-tall-cabinet.jpg", "cat": "bath", "w": 900, "h": 1200, "cap": {"hu": "WC és magas szekrény", "en": "Toilet and tall cabinet"}}, {"src": "photos/24-washbasin.jpg", "cat": "bath", "w": 900, "h": 1200, "cap": {"hu": "Mosdó", "en": "Washbasin"}}, {"src": "photos/25-brushed-gold-fittings.jpg", "cat": "bath", "w": 900, "h": 1200, "cap": {"hu": "Arany színű csaptelepek", "en": "Brushed gold fittings"}}, {"src": "photos/26-toilet.jpg", "cat": "bath", "w": 900, "h": 1200, "cap": {"hu": "WC", "en": "Toilet"}}, {"src": "photos/27-separate-toilet-with-hand-basin.jpg", "cat": "bath", "w": 900, "h": 1200, "cap": {"hu": "Külön WC kézmosóval", "en": "Separate toilet with hand basin"}}, {"src": "photos/28-hallway-with-mirrored-wardrobes.jpg", "cat": "hall", "w": 900, "h": 1200, "cap": {"hu": "Előtér tükrös gardróbszekrényekkel", "en": "Hallway with mirrored wardrobes"}}, {"src": "photos/29-corridor-to-the-rooms.jpg", "cat": "hall", "w": 900, "h": 1200, "cap": {"hu": "Folyosó a szobák felé", "en": "Corridor to the rooms"}}, {"src": "photos/30-roses-along-the-house.jpg", "cat": "garden", "w": 1200, "h": 900, "cap": {"hu": "Rózsák a ház mentén", "en": "Roses along the house"}}, {"src": "photos/31-flowering-tree-and-hydrangeas.jpg", "cat": "garden", "w": 900, "h": 1200, "cap": {"hu": "Virágzó fa és hortenziák", "en": "Flowering tree and hydrangeas"}}, {"src": "photos/32-standard-roses.jpg", "cat": "garden", "w": 900, "h": 1200, "cap": {"hu": "Rózsafák", "en": "Standard roses"}}, {"src": "photos/33-palms-and-camellia.jpg", "cat": "garden", "w": 1200, "h": 900, "cap": {"hu": "Pálmák és kamélia", "en": "Palms and camellia"}}, {"src": "photos/34-flower-bed-along-the-house.jpg", "cat": "garden", "w": 1200, "h": 900, "cap": {"hu": "Virágágyás a ház mentén", "en": "Flower bed along the house"}}, {"src": "photos/35-the-house-in-spring.jpg", "cat": "yard", "w": 1061, "h": 1200, "cap": {"hu": "A ház tavasszal", "en": "The house in spring"}}, {"src": "photos/36-paved-courtyard.jpg", "cat": "yard", "w": 1023, "h": 1200, "cap": {"hu": "Burkolt udvar", "en": "Paved courtyard"}}, {"src": "photos/37-entrance-from-the-street.jpg", "cat": "yard", "w": 900, "h": 1200, "cap": {"hu": "Bejárat az utcáról", "en": "Entrance from the street"}}];
+
+const CHAPTERS = {
+  living:{big:"Konyha és étkező", small:"Nappali Smart TV-vel, kertre néző ablak"},
+  bedrooms:{big:"Hálószoba éjjeliszekrényekkel", small:"Gyerekszoba emeletes ággyal"},
+  bath:{big:"Fürdőszoba káddal", small:"Külön WC kézmosóval"}
+};
+
+const T = {
+hu:{
+ n_photos:"Fotók", n_details:"A lakás", n_area:"Környék", n_terms:"Feltételek",
+ where:"Újbuda, Budapest XI. kerület, Bedő utca", hero_title:"Kertes otthon Buda csendes zöldövezetében", per_month:"havonta", per_month_long:"havi bérleti díj, hosszú távra",
+ lede:"Hosszú távra kiadó egy 77 m²-es, igényesen berendezett, teljesen bútorozott és gépesített lakás egy 2006-ban épült, mindössze négylakásos társasház földszintjén. Nappali amerikai konyhával, két hálószoba, terasz és közel 500 m²-es saját kert.",
+ facts:[["Bérleti díj","540 000 Ft / hó"],["Alapterület","77 m²"],["Szobák","nappali + 2 hálószoba"],["Terasz","11 m²"],["Kert","közel 500 m², saját használatú"],["Emelet","földszint"],["Költözhető","azonnal"],["Energiaosztály","A+++"]],
+ cta:"Megtekintést kérek",
+ ch:{
+  living:{t:"Nappali és konyha", p:"Világos, tágas nappali amerikai konyhával és étkezővel. A teraszra és a kertbe közvetlenül innen lehet kilépni. Bársony kanapé, márványhatású asztalok, design lámpák és Smart TV."},
+  bedrooms:{t:"Két hálószoba", p:"Két külön nyíló hálószoba. A nagyobbikban dupla ágy, gardróbszekrény és íróasztal, a másik gyerekszobaként van berendezve, beépített polccal."},
+  bath:{t:"Fürdőszoba és vendég-WC", p:"Kádas fürdőszoba WC-vel, arany színű csaptelepekkel és törölközőszárítóval, valamint külön vendég-WC kézmosóval."}
+ },
+ g_title:"A terasz és a kert",
+ g_text:"A nappaliból nyíló 11 m²-es terasz kerti bútorral és napernyővel, mellette közel 500 m²-es, saját használatú zárt kert rózsákkal, hortenziákkal és pálmákkal. Van melegágyás és grill is.",
+ photos_h:"Fotók",
+ gcats:{all:"Mind",living:"Nappali és konyha",bedroom:"Hálószoba",kids:"Gyerekszoba",bath:"Fürdő és WC",hall:"Előtér",terrace:"Terasz",garden:"Kert",yard:"Udvar és bejárat"},
+ lb_close:"Bezárás", lb_prev:"Előző fotó", lb_next:"Következő fotó", lb_open:"Fotó megnyitása:",
+ details_h:"A lakás részletei", rooms_h:"Beosztás", extras_h:"Felszereltség", house_h:"Ház és energia",
+ rooms:[["Nappali","amerikai konyhával, étkezővel"],["Hálószoba","dupla ággyal"],["Gyerekszoba","2. hálószoba"],["Fürdőszoba","káddal, WC-vel"],["Vendég-WC","kézmosóval"],["Előtér","tükrös gardróbbal"],["Terasz","11 m²"],["Kert","közel 500 m²"]],
+ extras:["Padlófűtés, egyedi gázfűtés","Légkondicionáló","Smart TV","Mosogatógép szárítással","Indukciós főzőlap, sütő, páraelszívó","Hűtő-fagyasztó, mikró","Törölközőszárító","Beépített szekrények","USB-töltős konnektorok","Grill és melegágyás a kertben","Akadálymentes"],
+ house:[["Épült","2006"],["Lakások száma","4"],["Emelet","földszint"],["Tájolás","délnyugat"],["Energiaosztály","A+++"],["Szigetelés","15 cm"],["Rezsi","kb. 25 000 Ft / hó"],["Parkolás","utcán, ingyenes"]],
+ area_h:"A környék", area_lead:"Csendes, zöld, családi házas utca Újbudán, közel boltokhoz, sporthoz, iskolákhoz és a városhoz.", map:"Megnyitás térképen",
+ cats:{shop:"Bevásárlás",family:"Családoknak",sport:"Sport",out:"Szabadidő",move:"Közlekedés"},
+ places:[["shop","Spar és Tesco Express, gyalog elérhető"],["shop","Kis élelmiszerbolt és pékség"],["shop","2 zöldség- és gyümölcsbolt"],["shop","Gyógyszertárak, éttermek, kávézók"],["family","Óvodák és iskolák"],["family","Játszóterek"],["sport","Ilevén Sportklub: uszodák, edzőterem"],["sport","2 tenisz- és squashklub"],["sport","Barça Labdarúgó Akadémia"],["sport","Magyar Labdarúgó Szövetség"],["out","Sétautak"],["out","Kerékpárutak, köztük a Balatonig vezető út"],["move","41-es villamos a Gellért-hegy felé"],["move","Több buszmegálló"],["move","Legközelebbi metró: Kelenföld"],["move","Az M1–M7 néhány perc autóval"]],
+ terms_h:"Feltételek",
+ terms_note:"Szerződéskötéskor 2 havi kaució és az első havi bérleti díj fizetendő. A kauciót a bérlet végén visszakapja.",
+ terms:[["Kaució","2 havi bérleti díj"],["Szerződéskötéskor","1 620 000 Ft"],["Rezsi","kb. 25 000 Ft / hó"],["Minimális bérleti idő","12 hónap"],["Költözhető","azonnal"],["Bútorozott","igen, teljesen gépesítve"],["Kisállat","nem hozható"],["Parkolás","utcán, ingyenes"]],
+ contact_h:"Megtekintés és érdeklődés",
+ fl_name:"Név", fl_date:"Mikortól költözne?", fl_months:"Hány hónapra?", fl_people:"Hányan laknának?", fl_msg:"Üzenet (nem kötelező)",
+ send_mail:"Küldés e-mailben", send_wa:"Küldés WhatsAppon", call:"Hívás", err_name:"Adja meg a nevét.",
+ form_hint:"Az üzenet előre megírva nyílik meg az e-mail vagy a WhatsApp alkalmazásában.", no_contact:"A kapcsolati adatok hamarosan felkerülnek.",
+ msg:(d)=>`Jó napot! Érdeklődöm a Hortenzia Garden Buda lakás iránt (Bedő utca).\nNév: ${d.name}\nKöltözés: ${d.date||"rugalmas"}\nIdőtartam: ${d.months} hónap\nLakók száma: ${d.people}\n${d.msg}`,
+ subj:"Érdeklődés: Hortenzia Garden Buda", foot:"Hortenzia Garden Buda, kiadó kertes lakás Újbudán (Budapest XI.)"
+},
+en:{
+ n_photos:"Photos", n_details:"The flat", n_area:"Neighbourhood", n_terms:"Terms",
+ where:"Újbuda, on the Buda side of Budapest (District XI)", hero_title:"A garden home in a quiet, green corner of Buda", per_month:"per month", per_month_long:"monthly rent, long-term let",
+ lede:"A 77 m² flat, tastefully furnished and fully equipped, on the ground floor of a building of just four flats, built in 2006. A living room with an open-plan kitchen, two bedrooms, a terrace and a private garden of nearly 500 m².",
+ facts:[["Rent","540,000 Ft / month"],["Size","77 m²"],["Rooms","living room + 2 bedrooms"],["Terrace","11 m²"],["Garden","nearly 500 m², private"],["Floor","ground floor"],["Available","now"],["Energy rating","A+++"]],
+ cta:"Request a viewing",
+ ch:{
+  living:{t:"Living room and kitchen", p:"A bright, spacious living room with an open-plan kitchen and dining area. The terrace and garden open straight off it. Velvet sofa, marble-effect tables, designer lighting and a Smart TV."},
+  bedrooms:{t:"Two bedrooms", p:"Two separate bedrooms. The larger has a double bed, a wardrobe and a desk; the second is set up as a children's room with built-in shelving."},
+  bath:{t:"Bathroom and guest toilet", p:"A bathroom with a bathtub and toilet, brushed-gold fittings and a heated towel rail, plus a separate guest toilet with a hand basin."}
+ },
+ g_title:"The terrace and the garden",
+ g_text:"An 11 m² terrace off the living room with garden furniture and a parasol, next to an enclosed private garden of nearly 500 m² with roses, hydrangeas and palms. There's also a warm raised bed and a grill.",
+ photos_h:"Photos",
+ gcats:{all:"All",living:"Living and kitchen",bedroom:"Bedroom",kids:"Children's room",bath:"Bath and WC",hall:"Hallway",terrace:"Terrace",garden:"Garden",yard:"Yard and entrance"},
+ lb_close:"Close", lb_prev:"Previous photo", lb_next:"Next photo", lb_open:"Open photo:",
+ details_h:"The flat in detail", rooms_h:"Layout", extras_h:"Equipment", house_h:"Building and energy",
+ rooms:[["Living room","open-plan kitchen and dining"],["Bedroom","double bed"],["Children's room","bedroom 2"],["Bathroom","bathtub and toilet"],["Guest toilet","with hand basin"],["Hallway","mirrored wardrobes"],["Terrace","11 m²"],["Garden","nearly 500 m²"]],
+ extras:["Underfloor heating, own gas boiler","Air conditioning","Smart TV","Dishwasher with drying","Induction hob, oven, extractor hood","Fridge-freezer, microwave","Heated towel rail","Built-in wardrobes","Sockets with USB charging","Grill and raised bed in the garden","Step-free access"],
+ house:[["Built","2006"],["Flats in building","4"],["Floor","ground floor"],["Orientation","south-west"],["Energy rating","A+++"],["Insulation","15 cm"],["Utilities","about 25,000 Ft / month"],["Parking","street, free"]],
+ area_h:"The neighbourhood", area_lead:"A quiet, green street of family houses in Újbuda, Buda's District XI, close to shops, sport, schools and the city.", map:"Open in maps",
+ cats:{shop:"Shopping",family:"For families",sport:"Sport",out:"Outdoors",move:"Getting around"},
+ places:[["shop","Spar and Tesco Express within walking distance"],["shop","Small grocery and bakery"],["shop","2 fruit and vegetable shops"],["shop","Pharmacies, restaurants, cafés"],["family","Kindergartens and schools"],["family","Playgrounds"],["sport","Ilevén Sports Club: pools and gym"],["sport","2 tennis and squash clubs"],["sport","Barça Football Academy"],["sport","Hungarian Football Federation"],["out","Walking paths"],["out","Cycle paths, including the route to Lake Balaton"],["move","Tram 41 towards Gellért Hill"],["move","Several bus stops"],["move","Nearest metro: Kelenföld"],["move","M1 and M7 motorways a few minutes by car"]],
+ terms_h:"Terms",
+ terms_note:"Two months' deposit and the first month's rent are due at signing. The deposit is returned at the end of the lease.",
+ terms:[["Deposit","2 months' rent"],["Due at signing","1,620,000 Ft"],["Utilities","about 25,000 Ft / month"],["Minimum lease","12 months"],["Available","now"],["Furnished","yes, fully equipped"],["Pets","not allowed"],["Parking","street, free"]],
+ contact_h:"Viewings and enquiries",
+ fl_name:"Name", fl_date:"When would you move in?", fl_months:"For how many months?", fl_people:"How many people?", fl_msg:"Message (optional)",
+ send_mail:"Send by email", send_wa:"Send on WhatsApp", call:"Call", err_name:"Enter your name.",
+ form_hint:"Your message opens ready to send in your email app or WhatsApp.", no_contact:"Contact details will be added soon.",
+ msg:(d)=>`Hello! I'm interested in the Hortenzia Garden Buda flat on Bedő utca.\nName: ${d.name}\nMove-in: ${d.date||"flexible"}\nLength: ${d.months} months\nPeople: ${d.people}\n${d.msg}`,
+ subj:"Enquiry: Hortenzia Garden Buda", foot:"Hortenzia Garden Buda, garden flat for rent in Újbuda (District XI)"
+}};
+
+let lang="hu", gcat="all", shown=[], cur=0;
+const $=s=>document.querySelector(s);
+const el=(tag,cls,txt)=>{const e=document.createElement(tag); if(cls)e.className=cls; if(txt!=null)e.textContent=txt; return e;};
+const byCap=c=>PHOTOS.find(p=>p.cap.hu===c);
+const cap=p=>p.cap[lang]||p.cap.hu;
+
+function figure(p,cls){
+  const f=el("figure",cls), b=el("button","figbtn"); b.type="button";
+  const im=el("img","ph"); im.src=p.src; im.alt=cap(p); im.loading="lazy"; im.decoding="async";
+  b.append(im); b.setAttribute("aria-label",T[lang].lb_open+" "+cap(p)); b.onclick=()=>openLb([p],0);
+  f.append(b, el("figcaption",null,cap(p))); return f;
+}
+function rowList(id,rows){$(id).replaceChildren(...rows.map(r=>{const li=el("li"); if(Array.isArray(r)) li.append(el("span",null,r[0]),el("span",null,r[1])); else li.append(el("span",null,r)); return li;}));}
+
+function render(){
+  const t=T[lang];
+  document.documentElement.lang=lang;
+  document.title=t.foot;
+  document.querySelectorAll("[data-t]").forEach(n=>{const v=t[n.dataset.t]; if(typeof v==="string") n.textContent=v;});
+  document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));
+  const hp=byCap("Nappali bársony kanapéval"); const hi=$("#heroImg"); if(!hi.src) hi.src=hp.src; hi.alt=cap(hp);
+  $("#facts").replaceChildren(...t.facts.map(([a,b])=>{const d=el("div"); d.append(el("dt",null,a),el("dd",null,b)); return d;}));
+  document.querySelectorAll("[data-ch]").forEach(sec=>{
+    const k=sec.dataset.ch, c=CHAPTERS[k], tx=t.ch[k];
+    const w=el("div","wrap"), txt=el("div","txt");
+    txt.append(el("h2",null,tx.t), el("p",null,tx.p), figure(byCap(c.small),"small"));
+    w.append(figure(byCap(c.big),"big"), txt); sec.replaceChildren(w);
+  });
+  document.querySelectorAll("[data-pic]").forEach(b=>{const p=byCap(b.dataset.pic), im=b.querySelector("img");
+    if(!im.src) im.src=p.src; im.alt=cap(p); b.setAttribute("aria-label",t.lb_open+" "+cap(p)); b.onclick=()=>openLb([p],0);
+    const fc=b.parentElement.querySelector("figcaption"); if(fc) fc.textContent=cap(p);});
+  renderGallery();
+  rowList("#rooms",t.rooms); rowList("#extras",t.extras); rowList("#house",t.house); rowList("#termsList",t.terms);
+  $("#groups").replaceChildren(...Object.entries(t.cats).map(([k,v])=>{const d=el("div"); d.append(el("h3",null,v));
+    const ul=el("ul"); ul.append(...t.places.filter(p=>p[0]===k).map(p=>el("li",null,p[1]))); d.append(ul); return d;}));
+  $("#formNote").textContent=(EMAIL||PHONE)?t.form_hint:t.no_contact;
+  $("#sendMail").hidden=!EMAIL && !!PHONE; $("#sendWa").hidden=!PHONE && !!EMAIL;
+  const cb=$("#callBtn"); cb.hidden=!PHONE; if(PHONE) cb.href="tel:"+PHONE;
+  $("#lbclose").setAttribute("aria-label",t.lb_close); $("#lbprev").setAttribute("aria-label",t.lb_prev); $("#lbnext").setAttribute("aria-label",t.lb_next);
+}
+function renderGallery(){
+  const t=T[lang];
+  const tabs=$("#gtabs"); tabs.setAttribute("aria-label",t.photos_h);
+  tabs.replaceChildren(...Object.entries(t.gcats).map(([k,v])=>{const n=k==="all"?PHOTOS.length:PHOTOS.filter(p=>p.cat===k).length; if(!n) return el("span");
+    const b=el("button",null,v); b.type="button"; b.append(el("small",null,n)); b.setAttribute("aria-pressed",k===gcat); b.onclick=()=>{gcat=k; renderGallery();}; return b;}));
+  const list=PHOTOS.filter(p=>gcat==="all"||p.cat===gcat);
+  $("#gallery").replaceChildren(...list.map((p,i)=>{const b=el("button"); b.type="button"; b.setAttribute("aria-label",t.lb_open+" "+cap(p));
+    const im=el("img"); im.src=p.src; im.alt=""; im.loading="lazy"; im.decoding="async"; b.append(im); b.onclick=()=>openLb(list,i); return b;}));
+}
+function showLb(){const p=shown[cur]; $("#lbimg").src=p.src; $("#lbimg").alt=cap(p); $("#lbcap").textContent=cap(p)+(shown.length>1?"  ("+(cur+1)+" / "+shown.length+")":"");
+  $("#lbprev").hidden=$("#lbnext").hidden=shown.length<2;}
+function openLb(list,i){shown=list; cur=i; showLb(); const d=$("#lb"); if(d.showModal) d.showModal(); else d.setAttribute("open","");}
+function step(n){cur=(cur+n+shown.length)%shown.length; showLb();}
+$("#lbprev").onclick=()=>step(-1); $("#lbnext").onclick=()=>step(1); $("#lbclose").onclick=()=>$("#lb").close();
+$("#lb").addEventListener("click",e=>{if(e.target.id==="lbin") $("#lb").close();});
+$("#lb").addEventListener("keydown",e=>{if(e.key==="ArrowLeft")step(-1); if(e.key==="ArrowRight")step(1);});
+let sx=null; const lbin=$("#lbin");
+lbin.addEventListener("touchstart",e=>{sx=e.touches[0].clientX},{passive:true});
+lbin.addEventListener("touchend",e=>{if(sx===null||shown.length<2)return; const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>50) step(dx<0?1:-1); sx=null;});
+
+function data(){
+  const name=$("#fname").value.trim(); $("#nameErr").hidden=!!name;
+  if(!name){$("#fname").focus(); return null;}
+  return {name,date:$("#fdate").value,months:$("#fmonths").value,people:$("#fpeople").value,msg:$("#fmsg").value.trim()};
+}
+$("#sendMail").onclick=()=>{const d=data(); if(!d)return; const t=T[lang]; if(!EMAIL){$("#formNote").textContent=t.no_contact; return;}
+  window.open("mailto:"+EMAIL+"?subject="+encodeURIComponent(t.subj)+"&body="+encodeURIComponent(t.msg(d)),"_blank");};
+$("#sendWa").onclick=()=>{const d=data(); if(!d)return; const t=T[lang]; if(!PHONE){$("#formNote").textContent=t.no_contact; return;}
+  window.open("https://wa.me/"+PHONE.replace(/\D/g,"")+"?text="+encodeURIComponent(t.msg(d)),"_blank");};
+document.querySelectorAll("[data-lang]").forEach(b=>b.onclick=()=>{lang=b.dataset.lang; try{localStorage.setItem("lang",lang)}catch(e){} render();});
+try{const s=localStorage.getItem("lang"); if(s&&T[s]) lang=s;}catch(e){}
+render();
+</script>
+</body>
+</html>
