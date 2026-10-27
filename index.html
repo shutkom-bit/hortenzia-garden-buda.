@@ -161,6 +161,45 @@ section.block{padding:88px 0; border-top:1px solid var(--line)}
   .board .oval{grid-column:1/4 !important} .board .arch{grid-column:4/7 !important}
   .b3 .oval{grid-column:2/6 !important}
 }
+.dtabs{display:flex; gap:6px; margin-bottom:44px; border-bottom:1px solid var(--line); overflow-x:auto; scrollbar-width:none}
+.dtabs::-webkit-scrollbar{display:none}
+.dtabs button{flex:none; background:none; border:0; padding:14px 18px 14px 0; margin-right:22px; min-height:48px; font-family:"Cormorant Garamond",Georgia,serif; font-size:clamp(22px,2.2vw,28px); color:var(--muted); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:color .2s}
+.dtabs button:hover{color:var(--ink)}
+.dtabs button[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--gold)}
+.dtabs small{font-family:"Jost",sans-serif; font-size:13px; margin-left:6px; color:var(--muted)}
+.dpanel{animation:fadeup .45s ease}
+@keyframes fadeup{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+@media (prefers-reduced-motion: reduce){.dpanel{animation:none}}
+.lay{display:grid; grid-template-columns:1.1fr 1fr; gap:64px; align-items:start}
+.rooms{list-style:none; margin:0; padding:0; counter-reset:r}
+.rooms button{display:grid; grid-template-columns:44px 1fr; gap:4px 12px; width:100%; text-align:left; background:none; border:0; border-bottom:1px solid var(--line); padding:16px 0; cursor:pointer; color:var(--ink); font:inherit; transition:padding .25s, background .25s}
+.rooms li:first-child button{border-top:1px solid var(--line)}
+.rooms .no{grid-row:1/3; font-family:"Cormorant Garamond",Georgia,serif; font-size:22px; color:var(--muted); padding-top:2px}
+.rooms .nm{font-family:"Cormorant Garamond",Georgia,serif; font-size:26px; line-height:1.1}
+.rooms .nt{color:var(--muted); font-size:15px}
+.rooms button[aria-current="true"]{padding-left:14px; background:linear-gradient(to right, var(--soft), transparent)}
+.rooms button[aria-current="true"] .no{color:var(--gold)}
+.rprev{position:sticky; top:100px}
+.rimg{aspect-ratio:4/5; overflow:hidden; border-radius:50% 50% 0 0 / 30% 30% 0 0; background:var(--soft)}
+.rimg img{width:100%; height:100%; object-fit:cover; transition:opacity .35s}
+.rprev figcaption{color:var(--muted); font-size:14px; margin-top:10px}
+.eq{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px}
+.eqc{border:1px solid var(--line); padding:26px 24px 22px; background:color-mix(in srgb, var(--soft) 45%, transparent)}
+.eqc svg{width:30px; height:30px; color:var(--gold); margin-bottom:14px}
+.eqc h3{font-size:26px; margin-bottom:12px}
+.eqc ul{list-style:none; margin:0; padding:0}
+.eqc li{padding:6px 0 6px 18px; position:relative; color:var(--muted)}
+.eqc li::before{content:""; position:absolute; left:0; top:15px; width:7px; height:7px; border-radius:50%; background:#A8B4E0}
+.stats{display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line); border-left:1px solid var(--line)}
+.stats div{border-right:1px solid var(--line); border-bottom:1px solid var(--line); padding:28px 22px}
+.stats b{display:block; font-family:"Cormorant Garamond",Georgia,serif; font-weight:500; font-size:clamp(34px,3.6vw,50px); line-height:1}
+.stats span{display:block; color:var(--muted); margin-top:10px; font-size:15px}
+@media (max-width:900px){
+  .lay{grid-template-columns:1fr; gap:24px}
+  .rprev{position:static; order:-1; max-width:420px; scroll-margin-top:90px}
+  .rimg{aspect-ratio:4/3; border-radius:0}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
 .cols{display:grid; grid-template-columns:repeat(3,1fr); gap:56px}
 .cols h3{font-size:28px; margin-bottom:16px}
 .list{list-style:none; margin:0; padding:0; border-top:1px solid var(--line)}
@@ -293,11 +332,15 @@ dialog.lb::backdrop{background:rgba(10,14,11,.94)}
   <section class="block" id="details">
     <div class="wrap">
       <h2 class="sh" data-t="details_h"></h2>
-      <div class="cols">
-        <div><h3 data-t="rooms_h"></h3><ul class="list" id="rooms"></ul></div>
-        <div><h3 data-t="extras_h"></h3><ul class="list" id="extras"></ul></div>
-        <div><h3 data-t="house_h"></h3><ul class="list" id="house"></ul></div>
+      <div class="dtabs" role="tablist" id="dtabs"></div>
+      <div class="dpanel" role="tabpanel" id="dp0">
+        <div class="lay">
+          <ol class="rooms" id="roomList"></ol>
+          <figure class="rprev"><div class="rimg"><img id="roomImg" alt=""></div><figcaption id="roomCap"></figcaption></figure>
+        </div>
       </div>
+      <div class="dpanel" role="tabpanel" id="dp1" hidden><div class="eq" id="eqGrid"></div></div>
+      <div class="dpanel" role="tabpanel" id="dp2" hidden><div class="stats" id="statGrid"></div></div>
     </div>
   </section>
 
@@ -374,7 +417,10 @@ const CHAPTERS = {
 
 const T = {
 hu:{
- n_photos:"Fotók", n_details:"A lakás", n_area:"Környék", n_terms:"Feltételek", album:"Album megnyitása", story_h:"Miért Hortenzia Garden?", story_p:"Tavasztól őszig hortenziák virágoznak a kertben és a teraszon: kék, fehér és halványzöld virágfejek a rózsák, a levendula és a pálmák között. Erről kapta a nevét ez az otthon, és ez a nyugodt, zöld hangulat folytatódik a lakásban is: zöld bársony, arany részletek és sok természetes fény.", all_photos:"Összes fotó", fx_note:"A forintban megadott összeg tájékoztató jellegű, az aktuális árfolyam alapján: 1 € = {R} Ft ({D}).", h_cta:"Megtekintés",
+ n_photos:"Fotók", n_details:"A lakás", n_area:"Környék", n_terms:"Feltételek", d_tabs:["Beosztás","Felszereltség","Ház és energia"],
+ d_rooms:[["Nappali","amerikai konyhával és étkezővel","Nappali bársony kanapéval"],["Hálószoba","dupla ágy, gardrób, állítható íróasztal","Hálószoba éjjeliszekrényekkel"],["Gyerekszoba","emeletes ágy, beépített polc","Gyerekszoba emeletes ággyal"],["Fürdőszoba","kád, WC, törölközőszárító","Fürdőszoba káddal"],["Vendég-WC","kézmosóval","Külön WC kézmosóval"],["Előtér","tükrös gardróbszekrények","Előtér tükrös gardróbszekrényekkel"],["Terasz","11 m², bútorral és napernyővel","Pihenősarok a teraszon"],["Kert","közel 500 m², saját használatú","A kert"]],
+ d_eq:[["comfort","Komfort és klíma",["Padlófűtés, egyedi gázkazán","Okos fűtésvezérlés","Légkondicionáló","Törölközőszárító"]],["kitchen","Konyha és mosás",["Új XXL mosogatógép","Mosó-szárítógép","Indukciós főzőlap, sütő, páraelszívó","Hűtő-fagyasztó, mikró"]],["work","Munka és technika",["Optikai internet","Smart TV","Állítható magasságú íróasztal","Kulik System irodai szék","USB-töltős konnektorok"]],["interior","Berendezés",["Prémium bútorok","Márvány asztalok","Design világítás","Beépített és tükrös szekrények"]],["outdoor","Kert és család",["Gázgrill és teraszbútor","Saját játszótér: trambulin, hinta","Melegágyás","Akadálymentes bejutás"]]],
+ d_stats:[["2006","építés éve"],["4","lakás a házban"],["A+++","energiaosztály"],["15 cm","hőszigetelés"],["DNy","délnyugati tájolás"],["Fsz.","földszint, kertkapcsolattal"],["~25 e Ft","átlagos havi rezsi"],["Ingyenes","utcai parkolás"]], album:"Album megnyitása", story_h:"Miért Hortenzia Garden?", story_p:"Tavasztól őszig hortenziák virágoznak a kertben és a teraszon: kék, fehér és halványzöld virágfejek a rózsák, a levendula és a pálmák között. Erről kapta a nevét ez az otthon, és ez a nyugodt, zöld hangulat folytatódik a lakásban is: zöld bársony, arany részletek és sok természetes fény.", all_photos:"Összes fotó", fx_note:"A forintban megadott összeg tájékoztató jellegű, az aktuális árfolyam alapján: 1 € = {R} Ft ({D}).", h_cta:"Megtekintés",
  where:"Újbuda, Budapest XI. kerület, Bedő utca", hero_title:"Kertes otthon Buda csendes zöldövezetében", per_month:"havonta", per_month_long:"havi bérleti díj, hosszú távra",
  lede:"Hosszú távra kiadó egy 77 m²-es, igényesen berendezett, teljesen bútorozott és gépesített lakás egy 2006-ban épült, mindössze négylakásos társasház földszintjén. Nappali amerikai konyhával, két hálószoba, terasz és közel 500 m²-es saját kert.",
  facts:[["Bérleti díj","{RENT} / hó"],["Alapterület","77 m²"],["Szobák","nappali + 2 hálószoba"],["Terasz","11 m²"],["Kert","közel 500 m², saját használatú"],["Emelet","földszint"],["Költözhető","azonnal"],["Energiaosztály","A+++"]],
@@ -407,7 +453,10 @@ hu:{
  subj:"Érdeklődés: Hortenzia Garden Buda", foot:"Hortenzia Garden Buda, kiadó kertes lakás Újbudán (Budapest XI.)"
 },
 en:{
- n_photos:"Photos", n_details:"The flat", n_area:"Neighbourhood", n_terms:"Terms", album:"Open the album", story_h:"Why Hortenzia Garden?", story_p:"From spring to autumn, hydrangeas bloom in the garden and on the terrace: blue, white and pale green heads among the roses, lavender and palms. That is where this home takes its name, and the same calm, green mood carries on inside: green velvet, gold details and plenty of natural light.", all_photos:"All photos", fx_note:"Forint amounts are indicative, based on the current exchange rate: 1 € = {R} Ft ({D}).", h_cta:"Book a viewing",
+ n_photos:"Photos", n_details:"The flat", n_area:"Neighbourhood", n_terms:"Terms", d_tabs:["Layout","Equipment","Building and energy"],
+ d_rooms:[["Living room","open-plan kitchen and dining","Nappali bársony kanapéval"],["Bedroom","double bed, wardrobe, adjustable desk","Hálószoba éjjeliszekrényekkel"],["Children's room","bunk bed, built-in shelving","Gyerekszoba emeletes ággyal"],["Bathroom","bathtub, toilet, heated towel rail","Fürdőszoba káddal"],["Guest toilet","with hand basin","Külön WC kézmosóval"],["Hallway","mirrored wardrobes","Előtér tükrös gardróbszekrényekkel"],["Terrace","11 m², furnished, with a parasol","Pihenősarok a teraszon"],["Garden","nearly 500 m², private","A kert"]],
+ d_eq:[["comfort","Comfort and climate",["Underfloor heating, own gas boiler","Smart heating control","Air conditioning","Heated towel rail"]],["kitchen","Kitchen and laundry",["New XXL dishwasher","Washer-dryer","Induction hob, oven, extractor hood","Fridge-freezer, microwave"]],["work","Work and tech",["Fibre-optic internet","Smart TV","Height-adjustable desk","Kulik System office chair","Sockets with USB charging"]],["interior","Interior",["Premium furniture","Marble tables","Designer lighting","Built-in and mirrored wardrobes"]],["outdoor","Garden and family",["Gas grill and terrace furniture","Private playground: trampoline, swings","Warm raised bed","Step-free access"]]],
+ d_stats:[["2006","year built"],["4","flats in the building"],["A+++","energy rating"],["15 cm","insulation"],["SW","south-west facing"],["G","ground floor, garden access"],["~25k Ft","average monthly utilities"],["Free","street parking"]], album:"Open the album", story_h:"Why Hortenzia Garden?", story_p:"From spring to autumn, hydrangeas bloom in the garden and on the terrace: blue, white and pale green heads among the roses, lavender and palms. That is where this home takes its name, and the same calm, green mood carries on inside: green velvet, gold details and plenty of natural light.", all_photos:"All photos", fx_note:"Forint amounts are indicative, based on the current exchange rate: 1 € = {R} Ft ({D}).", h_cta:"Book a viewing",
  where:"Újbuda, on the Buda side of Budapest (District XI)", hero_title:"A garden home in a quiet, green corner of Buda", per_month:"per month", per_month_long:"monthly rent, long-term let",
  lede:"A 77 m² flat, tastefully furnished and fully equipped, on the ground floor of a building of just four flats, built in 2006. A living room with an open-plan kitchen, two bedrooms, a terrace and a private garden of nearly 500 m².",
  facts:[["Rent","{RENT} / month"],["Size","77 m²"],["Rooms","living room + 2 bedrooms"],["Terrace","11 m²"],["Garden","nearly 500 m², private"],["Floor","ground floor"],["Available","now"],["Energy rating","A+++"]],
@@ -464,7 +513,7 @@ function render(){
   $("#facts").replaceChildren(...t.facts.map(([a,b])=>{const d=el("div"); d.append(el("dt",null,a),el("dd",null,fill(b))); return d;}));
   renderBoards();
   fillPrices();
-  rowList("#rooms",t.rooms); rowList("#extras",t.extras); rowList("#house",t.house); rowList("#termsList",t.terms.map(([a,b])=>[a,fill(b)]));
+  renderDetails(); rowList("#termsList",t.terms.map(([a,b])=>[a,fill(b)]));
   $("#groups").replaceChildren(...Object.entries(t.cats).map(([k,v])=>{const d=el("div"); d.append(el("h3",null,v));
     const ul=el("ul"); ul.append(...t.places.filter(p=>p[0]===k).map(p=>el("li",null,p[1]))); d.append(ul); return d;}));
   $("#formNote").textContent=(EMAIL||PHONE)?t.form_hint:t.no_contact;
@@ -502,6 +551,34 @@ function renderHero(){
   $("#albumBtn").textContent=T[lang].album+" ("+PHOTOS.length+")";
   $("#hprev").setAttribute("aria-label",T[lang].lb_prev); $("#hnext").setAttribute("aria-label",T[lang].lb_next);
   const sp=byCap("Hortenziák a teraszon"), si=$("#storyImg"); if(!si.src) si.src=sp.src; si.alt=cap(sp); $("#storyBtn").onclick=()=>openLb([sp],0);
+}
+const ICONS={comfort:'<path d="M14 14.8V4a2 2 0 1 0-4 0v10.8a4 4 0 1 0 4 0z"/><path d="M12 9v7"/>',
+ kitchen:'<path d="M4 10h16v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M2 10h20M9 6.5c0-1 1-1.2 1-2.5M14 6.5c0-1 1-1.2 1-2.5"/>',
+ work:'<rect x="4" y="5" width="16" height="11" rx="1"/><path d="M2 19h20"/>',
+ interior:'<path d="M8 3h8l3 8H5z"/><path d="M12 11v8M8 21h8"/>',
+ outdoor:'<path d="M12 21v-6"/><path d="M12 15c-4 0-6-3-6-6a6 6 0 0 1 12 0c0 3-2 6-6 6z"/>'};
+let dtab=0, droom=0;
+function setRoom(i){const t=T[lang], r=t.d_rooms[i], p=byCap(r[2]); droom=i;
+  document.querySelectorAll("#roomList button").forEach((b,k)=>b.setAttribute("aria-current",k===i));
+  const im=$("#roomImg"); if(im.dataset.k!==r[2]){im.style.opacity=0; setTimeout(()=>{im.src=p.src; im.dataset.k=r[2]; im.style.opacity=1;},180);}
+  im.alt=cap(p); $("#roomCap").textContent=cap(p);}
+function setTab(i){dtab=i; document.querySelectorAll("#dtabs button").forEach((b,k)=>{b.setAttribute("aria-selected",k===i); b.tabIndex=k===i?0:-1;});
+  [0,1,2].forEach(k=>{const p=$("#dp"+k); p.hidden=k!==i; if(k===i){p.style.animation="none"; void p.offsetWidth; p.style.animation="";}});}
+function renderDetails(){
+  const t=T[lang], counts=[t.d_rooms.length, t.d_eq.reduce((a,g)=>a+g[2].length,0), t.d_stats.length];
+  $("#dtabs").setAttribute("aria-label",t.details_h);
+  $("#dtabs").replaceChildren(...t.d_tabs.map((x,i)=>{const b=el("button",null,x); b.type="button"; b.setAttribute("role","tab"); b.id="dt"+i; b.setAttribute("aria-controls","dp"+i);
+    b.append(el("small",null,counts[i])); b.onclick=()=>setTab(i);
+    b.onkeydown=e=>{if(e.key==="ArrowRight"||e.key==="ArrowLeft"){const n=(i+(e.key==="ArrowRight"?1:2))%3; setTab(n); $("#dt"+n).focus();}}; return b;}));
+  [0,1,2].forEach(k=>$("#dp"+k).setAttribute("aria-labelledby","dt"+k));
+  $("#roomList").replaceChildren(...t.d_rooms.map((r,i)=>{const li=el("li"), b=el("button"); b.type="button";
+    b.append(el("span","no",String(i+1).padStart(2,"0")), el("span","nm",r[0]), el("span","nt",r[1]));
+    b.onclick=()=>{setRoom(i); const pv=document.querySelector(".rprev").getBoundingClientRect(); if(pv.bottom<90) document.querySelector(".rprev").scrollIntoView({behavior:"smooth",block:"start"});}; b.onmouseenter=()=>{if(window.matchMedia("(hover:hover)").matches) setRoom(i);}; li.append(b); return li;}));
+  $("#eqGrid").replaceChildren(...t.d_eq.map(([k,h,items])=>{const c=el("div","eqc");
+    c.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+ICONS[k]+'</svg>';
+    c.append(el("h3",null,h)); const ul=el("ul"); ul.append(...items.map(x=>el("li",null,x))); c.append(ul); return c;}));
+  $("#statGrid").replaceChildren(...t.d_stats.map(([v,l])=>{const d=el("div"); d.append(el("b",null,v),el("span",null,l)); return d;}));
+  setTab(dtab); setRoom(droom);
 }
 const MAIN={living:"Konyha és étkező",bedroom:"Hálószoba éjjeliszekrényekkel",kids:"Gyerekszoba emeletes ággyal",bath:"Fürdőszoba káddal",hall:"Előtér tükrös gardróbszekrényekkel",terrace:"Pihenősarok a teraszon",garden:"A kert",yard:"A ház tavasszal",street:"Virágzó fasor az utcában"};
 function shot(p,list,i,cls){
