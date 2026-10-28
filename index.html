@@ -221,6 +221,9 @@ section.block{padding:88px 0; border-top:1px solid var(--line)}
 .pl{width:100%; height:auto; display:block}
 .pa{fill:var(--bg); transition:fill .25s}
 .pg{fill:color-mix(in srgb, var(--green) 9%, var(--bg))}
+.py{fill:color-mix(in srgb, var(--muted) 12%, var(--bg))}
+.pl-fence{fill:none; stroke:var(--muted); stroke-width:4; stroke-dasharray:2 10; stroke-linecap:round; pointer-events:none}
+.pl-gate{fill:none; stroke:var(--ink); stroke-width:8; pointer-events:none}
 .pt{fill:color-mix(in srgb, var(--gold) 10%, var(--bg))}
 .pl-dot{fill:color-mix(in srgb, #A8B4E0 55%, transparent)}
 .pl-dot2{fill:color-mix(in srgb, var(--green) 20%, transparent)}
@@ -240,7 +243,7 @@ section.block{padding:88px 0; border-top:1px solid var(--line)}
 .pl-lbl text[data-z="wc"]{font-size:30px}
 .pl-lbl .pl-sub,.pl-lbl .pl-sm{font-family:"Jost",system-ui,sans-serif; font-size:24px; fill:var(--muted)}
 .plan figcaption{color:var(--muted); font-size:14px; margin-top:12px}
-@media (max-width:600px){.pl-lbl text{font-size:44px} .pl-lbl text[data-z="wc"]{font-size:34px} .pl-lbl .pl-sub,.pl-lbl .pl-sm{font-size:30px}}
+@media (max-width:600px){.pl-lbl text{font-size:40px} .pl-lbl text[data-z="wc"]{font-size:30px} .pl-lbl .pl-sub,.pl-lbl .pl-sm{font-size:30px}}
 .rooms{list-style:none; margin:0; padding:0; counter-reset:r}
 .rooms button{display:grid; grid-template-columns:44px 1fr; gap:4px 12px; width:100%; text-align:left; background:none; border:0; border-bottom:1px solid var(--line); padding:16px 0; cursor:pointer; color:var(--ink); font:inherit; transition:padding .25s, background .25s}
 .rooms li:first-child button{border-top:1px solid var(--line)}
@@ -439,12 +442,14 @@ dialog.lb::backdrop{background:rgba(10,14,11,.94)}
         <div class="lay">
           <div class="lcol">
           <figure class="plan">
-            <svg class="pl" viewBox="0 0 1400 870" role="group" id="planSvg">
+            <svg class="pl" viewBox="0 -190 1400 1060" role="group" id="planSvg">
               <defs>
                 <pattern id="plDots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="2.6" class="pl-dot"/><circle cx="19" cy="19" r="2" class="pl-dot2"/></pattern>
+                <pattern id="plBricks" width="40" height="20" patternUnits="userSpaceOnUse"><path d="M0 0H40M0 10H40M10 0V10M30 10V20" class="pl-tile"/></pattern>
                 <pattern id="plTiles" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" class="pl-tile"/></pattern>
               </defs>
-              <g class="pz" data-i="7" data-z="garden"><rect class="pa pg" x="16" y="128" width="1368" height="728" rx="46"/><rect x="16" y="128" width="1368" height="728" rx="46" fill="url(#plDots)" pointer-events="none"/></g>
+              <g class="pz" data-i="7" data-z="garden"><rect class="pa pg" x="16" y="-140" width="1368" height="996" rx="46"/><rect x="16" y="-140" width="1368" height="996" rx="46" fill="url(#plDots)" pointer-events="none"/></g>
+              <g class="pz" data-i="8" data-z="yard"><polygon class="pa py" points="1150,-140 1230,-140 1230,0 1300,0 1300,73 300,73 300,0 1150,0"/><polygon points="1150,-140 1230,-140 1230,0 1300,0 1300,73 300,73 300,0 1150,0" fill="url(#plBricks)" pointer-events="none"/></g>
               <g class="pz" data-i="6" data-z="terrace"><rect class="pa pt" x="92" y="300" width="208" height="420"/><rect x="92" y="300" width="208" height="420" fill="url(#plTiles)" pointer-events="none"/></g>
               <g class="pz" data-i="0" data-z="kitchen" data-start="Konyha és étkező"><rect class="pa" x="300" y="80" width="430" height="250"/></g>
               <g class="pz" data-i="0" data-z="living"><rect class="pa" x="300" y="330" width="430" height="390"/></g>
@@ -454,6 +459,7 @@ dialog.lb::backdrop{background:rgba(10,14,11,.94)}
               <g class="pz" data-i="2" data-z="kids"><rect class="pa" x="730" y="370" width="230" height="350"/></g>
               <g class="pz" data-i="1" data-z="bedroom"><polygon class="pa" points="960,370 1150,370 1150,300 1300,300 1300,720 960,720"/></g>
               <path class="pl-dash" d="M310 330H720"/>
+              <path class="pl-fence" d="M60 -140H1150M1230 -140H1340"/><path class="pl-gate" d="M1150 -152V-128M1230 -152V-128"/>
               <path class="pl-wall" d="M300 80H800M880 80H1300V720H300V510M300 390V80"/>
               <path class="pl-iw" d="M730 80V112M730 370V720M960 80V300M1050 80V300M960 300H975M1035 300H1070M1140 300H1300M1150 300V370M730 370H860M930 370H1000M1070 370H1150M960 370V720"/>
               <g class="pl-door">
@@ -475,13 +481,14 @@ dialog.lb::backdrop{background:rgba(10,14,11,.94)}
                 <text data-z="kitchen" x="515" y="214"></text>
                 <text data-z="living" x="515" y="534"></text>
                 <text data-z="hall" x="845" y="206"></text>
-                <text data-z="wc" x="1005" y="158" transform="rotate(-90 1005 158)"></text>
+                <text data-z="wc" x="1005" y="172" transform="rotate(-90 1005 172)"></text>
                 <text data-z="bath" x="1175" y="200"></text>
                 <text data-z="kids" x="845" y="560"></text>
                 <text data-z="bedroom" x="1130" y="560"></text>
                 <text data-z="terrace" x="196" y="500"></text>
                 <text data-z="garden" x="196" y="795"></text>
-                <text data-z="entry" x="840" y="44" class="pl-sm"></text>
+                <text data-z="yard" x="560" y="38" class="pl-sm" data-one="1"></text>
+                <text data-z="street" x="1190" y="-166" class="pl-sm" data-one="1"></text>
               </g>
               <path class="pl-arrow" d="M830 54L840 68L850 54" aria-hidden="true"/>
             </svg>
@@ -577,7 +584,7 @@ const T = {
 hu:{
  n_photos:"Fotók", n_details:"A lakás", n_area:"Környék", n_terms:"Feltételek", hero_sub:"77 m², két hálószoba, terasz és közel 500 m²-es saját kert egy csendes, zöld budai utcában, pár percre a várostól.", seal:"Kertes lakás ✿ Buda ✿ 500 m² saját kert ✿ ", menu:"Menü", te_text:"Esti vacsorák a fényfüzéres napernyő alatt, gyertyafény és grill, a sövény mögött teljes nyugalomban.", fl_text:"Rózsák, pünkösdi rózsák, levendula és rozmaring: tavasztól őszig mindig virágzik valami a kertben.", priv_h:"Adatvédelem.", privacy:"Ez az oldal nem gyűjt személyes adatokat, és nem használ analitikai vagy hirdetési sütiket, illetve követőkódokat. Az űrlapon megadott adatok nem kerülnek hozzánk: csak előre megírják a WhatsApp-üzenetet az Ön készülékén, és Ön dönti el, elküldi-e. A nyelvválasztást a böngészője helyben tárolja. A betűtípusokat a Google Fonts, az euróárfolyamot egy külső szolgáltatás tölti be az Európai Központi Bank adatai alapján.",
  perks:[["out","Kertvárosi csend","Családi házak, fák és saját kert: olyan érzés, mintha a városon kívül élne."],["move","Gyorsan a városban","Busz kb. 3, villamos kb. 7 perc sétára, közvetlen busz az M4-es metróhoz."],["mall","Minden a közelben","Etele Plaza és Savoya Park kb. 2–3 km, Tesco és IKEA Budaörsön, pékség a sarkon túl."],["sport","Sport a szomszédban","Padel és tenisz kb. 200 m-re, uszoda, fitnesz és squash kb. 600 m-re."],["road","Gyorsan ki a városból","M1 Bécs, M7 a Balaton és Horvátország felé, az elágazás kb. 6,5 km."]], d_tabs:["Beosztás","Felszereltség","Ház és energia"],
- d_rooms:[["Nappali","amerikai konyhával és étkezővel","Nappali bársony kanapéval"],["Hálószoba","dupla ágy, gardrób, állítható íróasztal","Hálószoba éjjeliszekrényekkel"],["Gyerekszoba","emeletes ágy, két íróasztal, beépített polc","Gyerekszoba emeletes ággyal"],["Fürdőszoba","kád, WC, törölközőszárító","Fürdőszoba káddal"],["Vendég-WC","kézmosóval","Külön WC kézmosóval"],["Előtér","tükrös gardróbszekrények","Előtér tükrös gardróbszekrényekkel"],["Terasz","11 m², bútorral és napernyővel","Pihenősarok a teraszon"],["Kert","közel 500 m², saját használatú","A kert"]],
+ d_rooms:[["Nappali","amerikai konyhával és étkezővel","Nappali bársony kanapéval"],["Hálószoba","dupla ágy, gardrób, állítható íróasztal","Hálószoba éjjeliszekrényekkel"],["Gyerekszoba","emeletes ágy, két íróasztal, beépített polc","Gyerekszoba emeletes ággyal"],["Fürdőszoba","kád, WC, törölközőszárító","Fürdőszoba káddal"],["Vendég-WC","kézmosóval","Külön WC kézmosóval"],["Előtér","tükrös gardróbszekrények","Előtér tükrös gardróbszekrényekkel"],["Terasz","11 m², bútorral és napernyővel","Pihenősarok a teraszon"],["Kert","közel 500 m², saját használatú","A kert"],["Bejárat és udvar","kertkapu az utcáról, burkolt kerti út","Bejárat az utcáról"]],
  d_eq:[["comfort","Komfort és klíma",["Padlófűtés, egyedi gázkazán","Okos fűtésvezérlés","Légkondicionáló","Törölközőszárító"]],["kitchen","Konyha és mosás",["Új XXL mosogatógép","Mosó-szárítógép","Indukciós főzőlap, sütő, páraelszívó","Hűtő-fagyasztó, mikró"]],["work","Munka és technika",["Optikai internet","Smart TV","Állítható magasságú íróasztal","Kulik System irodai szék","USB-töltős konnektorok"]],["interior","Berendezés",["Prémium bútorok","Márvány asztalok","Design világítás","Beépített és tükrös szekrények"]],["outdoor","Kert és család",["Gázgrill és teraszbútor","Saját játszótér: trambulin, hinta","Melegágyás","Akadálymentes bejutás"]]],
  d_stats:[["2006","építés éve"],["4","lakás a házban"],["A+++","energiaosztály"],["15 cm","hőszigetelés"],["DNy","délnyugati tájolás"],["Fsz.","földszint, kertkapcsolattal"],["~25 e Ft","átlagos havi rezsi"],["Ingyenes","utcai parkolás"]], album:"Album megnyitása", story_h:"Miért Hortenzia Garden?", story_p:"A tulajdonosok sok szeretettel ültették be a kertet és a teraszt. Tavasztól őszig kék, fehér és halványzöld hortenziák virágoznak, a ház mentén rózsák, pünkösdi rózsák és levendulabokrok illatoznak, a teraszon pálmák és kamélia hoznak déli hangulatot, a kertet pedig sűrű babérmeggy-sövény öleli körül, így igazán meghítt és zavartalan. Nyáron lila virágba borul a barátcserje. Erről a kertről kapta a nevét ez az otthon, és ugyanez a nyugodt, zöld hangulat folytatódik bent is: zöld bársony, arany részletek és sok természetes fény.", all_photos:"Összes fotó", fx_note:"A forintban megadott összeg tájékoztató jellegű, az aktuális árfolyam alapján: 1 € = {R} Ft ({D}).", h_cta:"Megtekintés",
  where:"Újbuda, Budapest XI. kerület, Bedő utca", hero_title:"Kertes otthon Buda csendes zöldövezetében", per_month:"havonta", per_month_long:"havi bérleti díj, hosszú távra",
@@ -614,7 +621,7 @@ hu:{
 en:{
  n_photos:"Photos", n_details:"The flat", n_area:"Neighbourhood", n_terms:"Terms", hero_sub:"77 m², two bedrooms, a terrace and a private garden of nearly 500 m² on a quiet, green street in Buda, minutes from the city.", seal:"Garden flat ✿ Buda ✿ 500 m² private garden ✿ ", menu:"Menu", te_text:"Evening dinners under the parasol with its string lights, candles and the grill, in full privacy behind the hedge.", fl_text:"Roses, peonies, lavender and rosemary: from spring to autumn there is always something in bloom.", priv_h:"Privacy.", privacy:"This site collects no personal data and uses no analytics or advertising cookies or trackers. Whatever you type into the form never reaches us: it only pre-fills a WhatsApp message on your own device, and you decide whether to send it. Your language choice is stored locally in your browser. Fonts are loaded from Google Fonts, and the euro exchange rate from an external service based on European Central Bank data.",
  perks:[["out","Suburban calm","Family houses, trees and your own garden: it feels like living just outside the city."],["move","Quickly into town","Bus about 3 and tram about 7 minutes on foot, with direct buses to the M4 metro."],["mall","Everything nearby","Etele Plaza and Savoya Park about 2–3 km away, Tesco and IKEA in Budaörs, a bakery round the corner."],["sport","Sport next door","Padel and tennis about 200 m away; pools, gym and squash about 600 m."],["road","Quickly out of town","M1 to Vienna, M7 to Lake Balaton and Croatia; the junction is about 6.5 km away."]], d_tabs:["Layout","Equipment","Building and energy"],
- d_rooms:[["Living room","open-plan kitchen and dining","Nappali bársony kanapéval"],["Bedroom","double bed, wardrobe, adjustable desk","Hálószoba éjjeliszekrényekkel"],["Children's room","bunk bed, two desks, built-in shelving","Gyerekszoba emeletes ággyal"],["Bathroom","bathtub, toilet, heated towel rail","Fürdőszoba káddal"],["Guest toilet","with hand basin","Külön WC kézmosóval"],["Hallway","mirrored wardrobes","Előtér tükrös gardróbszekrényekkel"],["Terrace","11 m², furnished, with a parasol","Pihenősarok a teraszon"],["Garden","nearly 500 m², private","A kert"]],
+ d_rooms:[["Living room","open-plan kitchen and dining","Nappali bársony kanapéval"],["Bedroom","double bed, wardrobe, adjustable desk","Hálószoba éjjeliszekrényekkel"],["Children's room","bunk bed, two desks, built-in shelving","Gyerekszoba emeletes ággyal"],["Bathroom","bathtub, toilet, heated towel rail","Fürdőszoba káddal"],["Guest toilet","with hand basin","Külön WC kézmosóval"],["Hallway","mirrored wardrobes","Előtér tükrös gardróbszekrényekkel"],["Terrace","11 m², furnished, with a parasol","Pihenősarok a teraszon"],["Garden","nearly 500 m², private","A kert"],["Entrance and yard","garden gate from the street, paved path","Bejárat az utcáról"]],
  d_eq:[["comfort","Comfort and climate",["Underfloor heating, own gas boiler","Smart heating control","Air conditioning","Heated towel rail"]],["kitchen","Kitchen and laundry",["New XXL dishwasher","Washer-dryer","Induction hob, oven, extractor hood","Fridge-freezer, microwave"]],["work","Work and tech",["Fibre-optic internet","Smart TV","Height-adjustable desk","Kulik System office chair","Sockets with USB charging"]],["interior","Interior",["Premium furniture","Marble tables","Designer lighting","Built-in and mirrored wardrobes"]],["outdoor","Garden and family",["Gas grill and terrace furniture","Private playground: trampoline, swings","Warm raised bed","Step-free access"]]],
  d_stats:[["2006","year built"],["4","flats in the building"],["A+++","energy rating"],["15 cm","insulation"],["SW","south-west facing"],["G","ground floor, garden access"],["~25k Ft","average monthly utilities"],["Free","street parking"]], album:"Open the album", story_h:"Why Hortenzia Garden?", story_p:"The owners have planted the garden and terrace with real love. From spring to autumn, blue, white and pale green hydrangeas are in bloom, roses, peonies and lavender bushes scent the path along the house, palms and a camellia give the terrace a southern feel, and a dense cherry laurel hedge wraps around the garden, keeping it private and peaceful. In summer the chaste tree bursts into purple flower. This garden gave the home its name, and the same calm, green mood carries on inside: green velvet, gold details and plenty of natural light.", all_photos:"All photos", fx_note:"Forint amounts are indicative, based on the current exchange rate: 1 € = {R} Ft ({D}).", h_cta:"Book a viewing",
  where:"Újbuda, on the Buda side of Budapest (District XI)", hero_title:"A garden home in a quiet, green corner of Buda", per_month:"per month", per_month_long:"monthly rent, long-term let",
@@ -729,19 +736,19 @@ function setRoom(i){const t=T[lang], r=t.d_rooms[i], p=byCap(r[2]); droom=i;
   im.alt=cap(p); $("#roomCap").textContent=cap(p);}
 function setTab(i){dtab=i; document.querySelectorAll("#dtabs button").forEach((b,k)=>{b.setAttribute("aria-selected",k===i); b.tabIndex=k===i?0:-1;});
   [0,1,2].forEach(k=>{const p=$("#dp"+k); p.hidden=k!==i; if(k===i){p.style.animation="none"; void p.offsetWidth; p.style.animation="";}});}
-const PLT={hu:{kitchen:"Konyha",entry:"Bejárat",hint:"Kattintson egy helyiségre a fotókért.",note:"Tájékoztató alaprajz, nem méretarányos.",open:"fotók megnyitása",garden:"közel 500 m²"},
- en:{kitchen:"Kitchen",entry:"Entrance",hint:"Click or tap a room to see its photos.",note:"Indicative plan, not to scale.",open:"open photos",garden:"nearly 500 m²"}};
-const PLCAT=["living","bedroom","kids","bath","bath","hall","terrace","garden"], SVGNS="http://www.w3.org/2000/svg";
+const PLT={hu:{kitchen:"Konyha",yard:"Bejárat az utcáról",street:"Utca",hint:"Kattintson egy helyiségre a fotókért.",note:"Tájékoztató alaprajz, nem méretarányos.",open:"fotók megnyitása",garden:"közel 500 m²"},
+ en:{kitchen:"Kitchen",yard:"Entrance from the street",street:"Street",hint:"Click or tap a room to see its photos.",note:"Indicative plan, not to scale.",open:"open photos",garden:"nearly 500 m²"}};
+const PLCAT=["living","bedroom","kids","bath","bath","hall","terrace","garden","yard"], SVGNS="http://www.w3.org/2000/svg";
 let planBound=false;
 function plOpen(z){const i=+z.dataset.i, list=PHOTOS.filter(p=>p.cat===PLCAT[i]); if(!list.length) return;
   const st=z.dataset.start||T.hu.d_rooms[i][2], k=list.findIndex(p=>p.cap.hu===st); setRoom(i); openLb(list,Math.max(0,k));}
 function plText(t,name,sub){t.replaceChildren(); const x=t.getAttribute("x");
-  const lines=(name.length>11&&name.includes(" "))?[name.slice(0,name.lastIndexOf(" ")),name.slice(name.lastIndexOf(" ")+1)]:[name];
+  const lines=(!t.dataset.one&&name.length>11&&name.includes(" "))?[name.slice(0,name.lastIndexOf(" ")),name.slice(name.lastIndexOf(" ")+1)]:[name];
   const n=lines.length+(sub?1:0);
   lines.forEach((ln,k)=>{const s=document.createElementNS(SVGNS,"tspan"); s.setAttribute("x",x); s.setAttribute("dy",k?"1.05em":(-(n-1)*0.55)+"em"); s.textContent=ln; t.append(s);});
   if(sub){const s=document.createElementNS(SVGNS,"tspan"); s.setAttribute("x",x); s.setAttribute("dy","1.6em"); s.setAttribute("class","pl-sub"); s.textContent=sub; t.append(s);}}
 function renderPlan(){const t=T[lang], P=PLT[lang], R=t.d_rooms;
-  const names={kitchen:P.kitchen,living:R[0][0],bedroom:R[1][0],kids:R[2][0],bath:R[3][0],wc:R[4][0],hall:R[5][0],terrace:R[6][0],garden:R[7][0],entry:P.entry};
+  const names={kitchen:P.kitchen,living:R[0][0],bedroom:R[1][0],kids:R[2][0],bath:R[3][0],wc:R[4][0],hall:R[5][0],terrace:R[6][0],garden:R[7][0],yard:P.yard,street:P.street};
   const subs={terrace:"11 m²",garden:P.garden};
   document.querySelectorAll(".pl-lbl text").forEach(tx=>plText(tx,names[tx.dataset.z],subs[tx.dataset.z]));
   $("#planSvg").setAttribute("aria-label",t.d_tabs[0]); $("#planHint").textContent=P.hint; $("#planNote").textContent=P.note;
